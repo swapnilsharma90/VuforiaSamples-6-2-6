@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/swapsharma/Downloads/VuforiaSamples-6-2-6/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/icon.png",
+        "source": "/Users/swapsharma/Downloads/VuforiaSamples-6-2-6/app/src/main/res/drawable-mdpi/icon.png"
+    },
+    {
+        "merged": "/Users/swapsharma/Downloads/VuforiaSamples-6-2-6/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/logo.png",
+        "source": "/Users/swapsharma/Downloads/VuforiaSamples-6-2-6/app/src/main/res/drawable-mdpi/logo.png"
+    }
+]
