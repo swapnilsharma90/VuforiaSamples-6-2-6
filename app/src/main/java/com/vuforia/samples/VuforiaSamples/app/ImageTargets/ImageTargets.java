@@ -131,7 +131,7 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
 
         // Load any sample specific textures:
         mTextures = new Vector<Texture>();
-        loadTextures();
+       // loadTextures();
 
         mIsDroidDevice = android.os.Build.MODEL.toLowerCase().startsWith(
                 "droid");
@@ -152,14 +152,14 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
                     nameTv.setText("Seemanta");
                     descTv.setText("iOS");
 
-                    techIcon.setBackgroundResource(R.drawable.vuforia_splash);
+                    techIcon.setBackgroundResource(R.drawable.iphone_icon);
 
                 }
                 if (userData.contains("t1")) {
                     //  showToast("KRUNAL");
                     nameTv.setText("Krunal");
                     descTv.setText("iOS");
-                    techIcon.setBackgroundResource(R.drawable.icon_plus_pressed);
+                    techIcon.setBackgroundResource(R.drawable.iphone_icon);
 
 
                 }
@@ -168,7 +168,7 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
                     // showToast("VINEET");
                     nameTv.setText("Vineet");
                     descTv.setText("Android");
-                    techIcon.setBackgroundResource(R.drawable.icon_02);
+                    techIcon.setBackgroundResource(R.drawable.android_ic);
 
 
                 }
@@ -178,7 +178,7 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
                     nameTv.setText("Parag");
                     descTv.setText("Android");
 
-                    techIcon.setBackgroundResource(R.drawable.icon_camera_normal);
+                    techIcon.setBackgroundResource(R.drawable.android_ic);
 
                 }
 
