@@ -45,4 +45,6 @@ dependencies {
     //compile files("$VUFORIA_SDK_DIR/$JAR_DIR/Vuforia.jar")
     compile fileTree(include: '*.jar', dir: 'libs')
     compile files('libs/Vuforia.jar')
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
 }

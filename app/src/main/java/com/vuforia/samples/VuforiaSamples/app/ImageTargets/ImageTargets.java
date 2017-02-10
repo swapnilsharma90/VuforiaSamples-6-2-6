@@ -12,6 +12,7 @@ package com.vuforia.samples.VuforiaSamples.app.ImageTargets;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -29,6 +30,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vuforia.CameraDevice;
@@ -53,6 +55,8 @@ import com.vuforia.samples.VuforiaSamples.ui.SampleAppMenu.SampleAppMenuInterfac
 
 import java.util.ArrayList;
 import java.util.Vector;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class ImageTargets extends Activity implements SampleApplicationControl,
@@ -99,6 +103,11 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
     public static boolean isDetected = false;
 
 
+    TextView nameTv;
+    TextView descTv;
+
+    CircleImageView techIcon;
+
     // Called when the activity first starts or the user navigates back to an
     // activity.
     @Override
@@ -139,18 +148,38 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
 
 
                 if (userData.contains("t3")) {
-                    showToast("SEEMANTO");
+                    //showToast("SEEMANTO");
+                    nameTv.setText("Seemanta");
+                    descTv.setText("iOS");
+
+                    techIcon.setBackgroundResource(R.drawable.vuforia_splash);
+
                 }
                 if (userData.contains("t1")) {
-                    showToast("KRUNAL");
+                    //  showToast("KRUNAL");
+                    nameTv.setText("Krunal");
+                    descTv.setText("iOS");
+                    techIcon.setBackgroundResource(R.drawable.icon_plus_pressed);
+
+
                 }
 
                 if (userData.contains("t2")) {
-                    showToast("VINEET");
+                    // showToast("VINEET");
+                    nameTv.setText("Vineet");
+                    descTv.setText("Android");
+                    techIcon.setBackgroundResource(R.drawable.icon_02);
+
+
                 }
 
                 if (userData.contains("t4")) {
-                    showToast("PARAG");
+                    // showToast("PARAG");
+                    nameTv.setText("Parag");
+                    descTv.setText("Android");
+
+                    techIcon.setBackgroundResource(R.drawable.icon_camera_normal);
+
                 }
 
             }
@@ -326,6 +355,10 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
         mUILayout.setVisibility(View.VISIBLE);
         mUILayout.setBackgroundColor(Color.BLACK);
 
+
+        mUILayout.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+
+
         // Gets a reference to the loading dialog
         loadingDialogHandler.mLoadingDialogContainer = mUILayout
                 .findViewById(R.id.loading_indicator);
@@ -334,10 +367,16 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
         loadingDialogHandler
                 .sendEmptyMessage(LoadingDialogHandler.SHOW_LOADING_DIALOG);
 
+
+        nameTv = (TextView) mUILayout.findViewById(R.id.nameTv);
+        descTv = (TextView) mUILayout.findViewById(R.id.descTv);
+
+
+        techIcon = (CircleImageView) mUILayout.findViewById(R.id.techIcon);
+
         // Adds the inflated layout to the view
         addContentView(mUILayout, new LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.MATCH_PARENT));
-
     }
 
 
@@ -424,8 +463,11 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
             // that the OpenGL ES surface view gets added
             // BEFORE the camera is started and video
             // background is configured.
+            android.view.Display display = ((android.view.WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+
+
             addContentView(mGlView, new LayoutParams(LayoutParams.MATCH_PARENT,
-                    LayoutParams.MATCH_PARENT));
+                    (int) (display.getHeight() * 0.85)));
 
             // Sets the UILayout to be drawn in front of the camera
             mUILayout.bringToFront();
@@ -447,9 +489,9 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
             else
                 Log.e(LOGTAG, "Unable to enable continuous autofocus");
 
-            mSampleAppMenu = new SampleAppMenu(this, this, "Image Targets",
-                    mGlView, mUILayout, null);
-            setSampleAppMenuSettings();
+//            mSampleAppMenu = new SampleAppMenu(this, this, "Image Targets",
+//                    mGlView, mUILayout, null);
+            //setSampleAppMenuSettings();
 
         } else {
             Log.e(LOGTAG, exception.getString());
