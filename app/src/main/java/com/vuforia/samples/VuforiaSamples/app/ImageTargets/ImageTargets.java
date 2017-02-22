@@ -11,7 +11,6 @@ countries.
 package com.vuforia.samples.VuforiaSamples.app.ImageTargets;
 
 import android.animation.Animator;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,13 +22,16 @@ import android.hardware.Camera.CameraInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.CheckBox;
-import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,7 +63,7 @@ import java.util.Vector;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class ImageTargets extends Activity implements SampleApplicationControl,
+public class ImageTargets extends AppCompatActivity implements SampleApplicationControl,
         SampleAppMenuInterface, ImageTargetRenderer.onDetected {
     private static final String LOGTAG = "ImageTargets";
 
@@ -91,7 +93,8 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
 
     private View mFlashOptionView;
 
-    private RelativeLayout mUILayout;
+//    private RelativeLayout mUILayout;
+private CoordinatorLayout mUILayout;
 
     private SampleAppMenu mSampleAppMenu;
 
@@ -107,7 +110,7 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
 
     TextView nameTv;
     TextView descTv;
-
+    View bottomSheet;
     CircleImageView techIcon;
 
     // Called when the activity first starts or the user navigates back to an
@@ -133,7 +136,7 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
 
         // Load any sample specific textures:
         mTextures = new Vector<Texture>();
-       // loadTextures();
+        // loadTextures();
 
         mIsDroidDevice = android.os.Build.MODEL.toLowerCase().startsWith(
                 "droid");
@@ -244,10 +247,10 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
         super.onResume();
 
         // This is needed for some Droid devices to force portrait
-        if (mIsDroidDevice) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
+//        if (mIsDroidDevice) {
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        }
 
         try {
             vuforiaAppSession.resumeAR();
@@ -351,14 +354,17 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
 
 
     private void startLoadingAnimation() {
-        mUILayout = (RelativeLayout) View.inflate(this, R.layout.camera_overlay,
+        mUILayout = (CoordinatorLayout) View.inflate(this, R.layout.camera_overlay_test,
                 null);
+
+//setContentView(R.layout.camera_overlay_test);
+//        mUILayout = (RelativeLayout) findViewById(R.id.camera_overlay_layout);
 
         mUILayout.setVisibility(View.VISIBLE);
         mUILayout.setBackgroundColor(Color.BLACK);
 
 
-        mUILayout.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        mUILayout.setLayoutParams(new CoordinatorLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
 
         // Gets a reference to the loading dialog
@@ -369,32 +375,79 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
         loadingDialogHandler
                 .sendEmptyMessage(LoadingDialogHandler.SHOW_LOADING_DIALOG);
 
-
         nameTv = (TextView) mUILayout.findViewById(R.id.nameTv);
         descTv = (TextView) mUILayout.findViewById(R.id.descTv);
-
-
         techIcon = (CircleImageView) mUILayout.findViewById(R.id.techIcon);
 
-        LottieAnimationView animationView = (LottieAnimationView)mUILayout.findViewById(R.id.animation_view);
-        animationView.setAnimation("data.json");
-        animationView.loop(true);
-        animationView.addAnimatorListener(new Animator.AnimatorListener() {
-            @Override public void onAnimationStart(Animator animation) {
-            }
-            @Override public void onAnimationEnd(Animator animation) {
-               // recordDroppedFrames();
+
+//        <!---name ,email,mobile skill,yers project tools portfolio link ,image ,send button, sound->
+
+
+        bottomSheet = mUILayout.findViewById(R.id.design_bottom_sheet);
+        final BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
+
+
+        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                switch (newState) {
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                        Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_DRAGGING");
+                        break;
+                    case BottomSheetBehavior.STATE_SETTLING:
+                        Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_SETTLING");
+                        break;
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                        Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_EXPANDED");
+                        break;
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                        Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_COLLAPSED");
+                        break;
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                        Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_HIDDEN");
+                        break;
+                }
             }
 
-            @Override public void onAnimationCancel(Animator animation) {
-            }
-
-            @Override public void onAnimationRepeat(Animator animation) {
-//                recordDroppedFrames();
-//                startRecordingDroppedFrames();
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                Log.i("BottomSheetCallback", "slideOffset: " + slideOffset);
             }
         });
 
+
+
+        bottomSheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (behavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
+                    behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                } else {
+                    behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
+            }
+        });
+
+
+        LottieAnimationView animationView = (LottieAnimationView) mUILayout.findViewById(R.id.animation_view);
+        animationView.setAnimation("data.json");
+        animationView.loop(true);
+        animationView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
 
         if (animationView.isAnimating()) {
             animationView.pauseAnimation();
@@ -404,7 +457,6 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
             }
             animationView.playAnimation();
         }
-
 
         // Adds the inflated layout to the view
         addContentView(mUILayout, new LayoutParams(LayoutParams.MATCH_PARENT,

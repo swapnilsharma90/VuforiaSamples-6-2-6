@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/camera_overlay_layout_test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <RelativeLayout
+            android:id="@+id/camera_overlay_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/loading_indicator"
+                style="@android:style/Widget.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="360dp"
+                android:layout_height="360dp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="data.json"
+                app:lottie_loop="true" />
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <RelativeLayout
+        android:id="@+id/design_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@android:color/darker_gray"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:padding="8dp"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="50dp"
+        app:elevation="6dp"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+
+
+
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_above="@+id/divider"
+            android:layout_alignLeft="@+id/descTv"
+            android:layout_alignStart="@+id/descTv"
+            android:layout_marginBottom="2dp"
+            android:paddingLeft="8dp"
+            android:text="Developer"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="250dp"
+            android:layout_height="2px"
+            android:layout_above="@+id/descTv"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="2dp"
+            android:background="@android:color/white" />
+
+        <TextView
+            android:id="@+id/descTv"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
+            android:paddingLeft="8dp"
+            android:text="Description"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/techIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/nameTv"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_toEndOf="@+id/divider"
+            android:layout_toRightOf="@+id/divider"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
