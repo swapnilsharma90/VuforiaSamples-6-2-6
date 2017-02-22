@@ -44,7 +44,7 @@
         android:id="@+id/design_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="380dp"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/black"
         android:clickable="true"
         android:focusableInTouchMode="true"
         android:padding="8dp"
@@ -61,7 +61,7 @@
             android:layout_marginBottom="2dp"
             android:paddingLeft="8dp"
             android:text="Developer"
-            android:textColor="@color/white"
+            android:textColor="#2CFFFD"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -79,24 +79,151 @@
 
         <TextView
             android:id="@+id/descTv"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_below="@+id/nameTv"
             android:paddingLeft="8dp"
             android:text="Description"
-            android:textColor="@color/white"
+            android:textColor="#2CFFFD"
             android:textSize="14sp" />
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/techIcon"
             android:layout_width="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@+id/nameTv"
-            android:layout_toRightOf="@+id/nameTv"
             android:layout_height="40dp"
             android:layout_marginLeft="4dp"
             android:layout_marginStart="4dp"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="2dp" />
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/nameTv"
+            android:layout_toRightOf="@+id/nameTv"
+            app:civ_border_color="#2CFFFD"
+            app:civ_border_width="6dp" />
+
+
+
+
+        <TextView
+            android:id="@+id/contactTv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/descTv"
+            android:paddingLeft="8dp"
+            android:text="Contact :"
+            android:textColor="#2CFFFD"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/emailTv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            android:layout_below="@+id/contactTv"
+            android:paddingLeft="8dp"
+            android:text="email@deloitte.com"
+            android:textColor="#2CFFFD"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/mobileTv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/emailTv"
+            android:paddingLeft="8dp"
+            android:text="+91-1176567893"
+            android:textColor="#2CFFFD"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/projectsTv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/mobileTv"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="8dp"
+            android:text="Projects :"
+            android:textColor="#2CFFFD"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/expTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/projectsTv"
+            android:paddingLeft="8dp"
+            android:text="5 years of Experience"
+            android:textColor="#2CFFFD"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/projectDetailsTv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+
+            android:layout_below="@+id/expTv"
+            android:paddingLeft="8dp"
+            android:text="SomeProject, ABC , XYZ Project"
+            android:textColor="#2CFFFD"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/toolsHeaderTv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/projectDetailsTv"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="8dp"
+            android:text="Tools :"
+
+            android:textColor="#2CFFFD"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/toolsTv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/toolsHeaderTv"
+            android:layout_marginTop="4dp"
+
+            android:paddingLeft="8dp"
+            android:text="Android Studio, GIT, HTML5"
+            android:textColor="#2CFFFD"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/portfolioLinkHeaderTv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/toolsTv"
+            android:paddingLeft="8dp"
+            android:text="Portfolio Link:"
+            android:textColor="#2CFFFD"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/portfolioLinkTv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/portfolioLinkHeaderTv"
+            android:linksClickable="true"
+            android:paddingLeft="8dp"
+            android:text="www.google.com"
+            android:textColor="#2CFFFD"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="false"
+            android:layout_below="@+id/portfolioLinkTv"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Get on Email" />
 
 
     </RelativeLayout>

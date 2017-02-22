@@ -22,6 +22,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -352,7 +353,7 @@ private CoordinatorLayout mUILayout;
         techIcon = (CircleImageView) mUILayout.findViewById(R.id.techIcon);
 
 
-//        <!---name ,email,mobile skill,yers project tools portfolio link ,image ,send button, sound->
+//        <!---name ,email,mobile skill,years, project, tools, portfolio link ,image ,send button, sound->
 
 
         bottomSheet = mUILayout.findViewById(R.id.design_bottom_sheet);
@@ -371,9 +372,18 @@ private CoordinatorLayout mUILayout;
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED:
                         Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_EXPANDED");
+                        //animate show scale animation
+                        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(450,350);
+                        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                        params.addRule(RelativeLayout.RIGHT_OF, R.id.nameTv);
+
+                        techIcon.setLayoutParams(params); //causes layout update
+                        techIcon.setImageDrawable( getResources().getDrawable(R.drawable.t1));
                         break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
                         Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_COLLAPSED");
+                       // techIcon.setImageDrawable(null);
+
                         break;
                     case BottomSheetBehavior.STATE_HIDDEN:
                         Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_HIDDEN");
