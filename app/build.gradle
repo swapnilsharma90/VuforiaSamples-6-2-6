@@ -5,7 +5,7 @@ def NATIVE_LIB_DIR = 'build/lib'
 def JAR_DIR = 'build/java/vuforia'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 24
     buildToolsVersion "22.0.1"
     compileOptions.incremental = false
 
@@ -16,8 +16,8 @@ android {
 
     defaultConfig {
         applicationId "com.vuforia.samples.VuforiaSamples"
-        minSdkVersion 9
-        targetSdkVersion 22
+        minSdkVersion 14
+        targetSdkVersion 24
         versionCode 600
         versionName "6.0"
     }
@@ -46,5 +46,8 @@ dependencies {
     compile fileTree(include: '*.jar', dir: 'libs')
     compile files('libs/Vuforia.jar')
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:design:24.0.0'
 
+    compile 'com.airbnb.android:lottie:1.5.0'
 }

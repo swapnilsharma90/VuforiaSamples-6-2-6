@@ -10,6 +10,7 @@ countries.
 
 package com.vuforia.samples.VuforiaSamples.app.ImageTargets;
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -33,6 +34,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.vuforia.CameraDevice;
 import com.vuforia.DataSet;
 import com.vuforia.ObjectTracker;
@@ -373,6 +375,36 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
 
 
         techIcon = (CircleImageView) mUILayout.findViewById(R.id.techIcon);
+
+        LottieAnimationView animationView = (LottieAnimationView)mUILayout.findViewById(R.id.animation_view);
+        animationView.setAnimation("data.json");
+        animationView.loop(true);
+        animationView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override public void onAnimationStart(Animator animation) {
+            }
+            @Override public void onAnimationEnd(Animator animation) {
+               // recordDroppedFrames();
+            }
+
+            @Override public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override public void onAnimationRepeat(Animator animation) {
+//                recordDroppedFrames();
+//                startRecordingDroppedFrames();
+            }
+        });
+
+
+        if (animationView.isAnimating()) {
+            animationView.pauseAnimation();
+        } else {
+            if (animationView.getProgress() == 1f) {
+                animationView.setProgress(0f);
+            }
+            animationView.playAnimation();
+        }
+
 
         // Adds the inflated layout to the view
         addContentView(mUILayout, new LayoutParams(LayoutParams.MATCH_PARENT,

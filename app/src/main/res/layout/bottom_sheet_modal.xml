@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp">
+
+
+    <TextView
+        android:id="@+id/nameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_above="@+id/divider"
+        android:layout_alignLeft="@+id/descTv"
+        android:layout_alignStart="@+id/descTv"
+        android:paddingLeft="8dp"
+        android:layout_marginBottom="2dp"
+        android:text="Developer"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="250dp"
+        android:layout_height="2px"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:layout_above="@+id/descTv"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="2dp"
+        android:background="@android:color/white" />
+    <TextView
+        android:id="@+id/descTv"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:paddingLeft="8dp"
+        android:text="Description"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/techIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"
+        android:layout_alignTop="@+id/nameTv"
+        android:layout_toRightOf="@+id/divider"
+        android:layout_toEndOf="@+id/divider"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/text"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Bottom Sheet"-->
+        <!--android:textColor="#FFFFFF" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="Some text"-->
+        <!--android:textColor="#FFFFFF" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="Some desc text"-->
+        <!--android:textColor="#FFFFFF" />-->
+
+</LinearLayout>
