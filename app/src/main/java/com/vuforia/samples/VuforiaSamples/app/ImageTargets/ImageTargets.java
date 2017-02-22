@@ -1,13 +1,3 @@
-/*===============================================================================
-Copyright (c) 2016 PTC Inc. All Rights Reserved.
-
-
-Copyright (c) 2012-2014 Qualcomm Connected Experiences, Inc. All Rights Reserved.
-
-Vuforia is a trademark of PTC Inc., registered in the United States and other
-countries.
-===============================================================================*/
-
 package com.vuforia.samples.VuforiaSamples.app.ImageTargets;
 
 import android.animation.Animator;
@@ -146,53 +136,35 @@ private CoordinatorLayout mUILayout;
     @Override
     public void showUI(final String userData) {
 
-        System.out.println("yoyoyoyo...." + userData);
-
         runOnUiThread(new Runnable() {
             public void run() {
-
-
                 if (userData.contains("t3")) {
                     //showToast("SEEMANTO");
-                    nameTv.setText("Seemanta");
-                    descTv.setText("iOS");
-
+                    nameTv.setText("Seemanta Biswas");
+                    descTv.setText("iOS Developer");
                     techIcon.setBackgroundResource(R.drawable.iphone_icon);
-
                 }
                 if (userData.contains("t1")) {
                     //  showToast("KRUNAL");
-                    nameTv.setText("Krunal");
-                    descTv.setText("iOS");
+                    nameTv.setText("Krunal Satao");
+                    descTv.setText("iOS Developer");
                     techIcon.setBackgroundResource(R.drawable.iphone_icon);
-
-
                 }
-
                 if (userData.contains("t2")) {
                     // showToast("VINEET");
-                    nameTv.setText("Vineet");
-                    descTv.setText("Android");
+                    nameTv.setText("Vineet Rao");
+                    descTv.setText("Android Developer");
                     techIcon.setBackgroundResource(R.drawable.android_ic);
-
-
                 }
-
                 if (userData.contains("t4")) {
                     // showToast("PARAG");
-                    nameTv.setText("Parag");
-                    descTv.setText("Android");
-
+                    nameTv.setText("Parag Naik");
+                    descTv.setText("Android Developer");
                     techIcon.setBackgroundResource(R.drawable.android_ic);
-
                 }
-
             }
         });
-
-
     }
-
     // Process Single Tap event to trigger autofocus
     private class GestureListener extends
             GestureDetector.SimpleOnGestureListener {
