@@ -373,12 +373,21 @@ private CoordinatorLayout mUILayout;
                     case BottomSheetBehavior.STATE_EXPANDED:
                         Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_EXPANDED");
                         //animate show scale animation
-                        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(450,350);
-                        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-                        params.addRule(RelativeLayout.RIGHT_OF, R.id.nameTv);
-
+                        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(500,400);
+                       params.addRule(RelativeLayout.CENTER_IN_PARENT);
+                        params.addRule(RelativeLayout.ALIGN_PARENT_TOP, R.id.nameTv);
                         techIcon.setLayoutParams(params); //causes layout update
                         techIcon.setImageDrawable( getResources().getDrawable(R.drawable.t1));
+
+                        RelativeLayout.LayoutParams paramsTv = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+                        paramsTv.addRule(RelativeLayout.BELOW, R.id.techIcon);
+                        nameTv.setLayoutParams(paramsTv); //causes layout update
+
+
+
+
+
+
                         break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
                         Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_COLLAPSED");
@@ -533,7 +542,8 @@ private CoordinatorLayout mUILayout;
 
 
             addContentView(mGlView, new LayoutParams(LayoutParams.MATCH_PARENT,
-                    (int) (display.getHeight() * 0.85)));
+                    (int) (display.getHeight() * .85)));
+            //.85
 
             // Sets the UILayout to be drawn in front of the camera
             mUILayout.bringToFront();
