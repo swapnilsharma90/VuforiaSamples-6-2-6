@@ -21,6 +21,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
@@ -84,8 +85,8 @@ public class ImageTargets extends AppCompatActivity implements SampleApplication
 
     private View mFlashOptionView;
 
-//    private RelativeLayout mUILayout;
-private CoordinatorLayout mUILayout;
+    //    private RelativeLayout mUILayout;
+    private CoordinatorLayout mUILayout;
 
     private SampleAppMenu mSampleAppMenu;
 
@@ -102,6 +103,7 @@ private CoordinatorLayout mUILayout;
     TextView nameTv;
     TextView descTv;
     View bottomSheet;
+    Button emailBtn;
     CircleImageView techIcon;
 
     // Called when the activity first starts or the user navigates back to an
@@ -143,29 +145,29 @@ private CoordinatorLayout mUILayout;
                     //showToast("SEEMANTO");
                     nameTv.setText("Seemanta Biswas");
                     descTv.setText("iOS Developer");
-                    techIcon.setBackgroundResource(R.drawable.iphone_icon);
-                }
-                if (userData.contains("t1")) {
+                  //  techIcon.setBackgroundResource(R.drawable.iphone_icon);
+                } else if (userData.contains("t1")) {
                     //  showToast("KRUNAL");
                     nameTv.setText("Krunal Satao");
                     descTv.setText("iOS Developer");
-                    techIcon.setBackgroundResource(R.drawable.iphone_icon);
-                }
-                if (userData.contains("t2")) {
+                   // techIcon.setBackgroundResource(R.drawable.iphone_icon);
+                } else if (userData.contains("t2")) {
                     // showToast("VINEET");
                     nameTv.setText("Vineet Rao");
                     descTv.setText("Android Developer");
-                    techIcon.setBackgroundResource(R.drawable.android_ic);
-                }
-                if (userData.contains("t4")) {
+                   // techIcon.setBackgroundResource(R.drawable.android_ic);
+                } else if (userData.contains("t4")) {
                     // showToast("PARAG");
                     nameTv.setText("Parag Naik");
                     descTv.setText("Android Developer");
-                    techIcon.setBackgroundResource(R.drawable.android_ic);
+                  //  techIcon.setBackgroundResource(R.drawable.android_ic);
+                } else {
+                    nameTv.setText("Please scan!");
                 }
             }
         });
     }
+
     // Process Single Tap event to trigger autofocus
     private class GestureListener extends
             GestureDetector.SimpleOnGestureListener {
@@ -351,9 +353,23 @@ private CoordinatorLayout mUILayout;
         nameTv = (TextView) mUILayout.findViewById(R.id.nameTv);
         descTv = (TextView) mUILayout.findViewById(R.id.descTv);
         techIcon = (CircleImageView) mUILayout.findViewById(R.id.techIcon);
+        emailBtn = (Button)  mUILayout.findViewById(R.id.emailBtn);
+
+
+
+
+
+
+
+
 
 
 //        <!---name ,email,mobile skill,years, project, tools, portfolio link ,image ,send button, sound->
+
+
+
+
+
 
 
         bottomSheet = mUILayout.findViewById(R.id.design_bottom_sheet);
@@ -372,26 +388,25 @@ private CoordinatorLayout mUILayout;
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED:
                         Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_EXPANDED");
+                        techIcon.setVisibility(View.VISIBLE);
                         //animate show scale animation
-                        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(500,400);
-                       params.addRule(RelativeLayout.CENTER_IN_PARENT);
+                        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(500, 400);
+                        params.addRule(RelativeLayout.CENTER_IN_PARENT);
                         params.addRule(RelativeLayout.ALIGN_PARENT_TOP, R.id.nameTv);
                         techIcon.setLayoutParams(params); //causes layout update
-                        techIcon.setImageDrawable( getResources().getDrawable(R.drawable.t1));
+                        techIcon.setImageDrawable(getResources().getDrawable(R.drawable.t1));
 
-                        RelativeLayout.LayoutParams paramsTv = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+                        RelativeLayout.LayoutParams paramsTv = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
                         paramsTv.addRule(RelativeLayout.BELOW, R.id.techIcon);
                         nameTv.setLayoutParams(paramsTv); //causes layout update
-
-
-
-
-
-
                         break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
                         Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_COLLAPSED");
-                       // techIcon.setImageDrawable(null);
+                        techIcon.setVisibility(View.GONE);
+                        nameTv.setVisibility(View.VISIBLE);
+
+                        //nameTv.setText("Please scan an image !");
+
 
                         break;
                     case BottomSheetBehavior.STATE_HIDDEN:
@@ -406,6 +421,16 @@ private CoordinatorLayout mUILayout;
             }
         });
 
+
+        emailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ImageTargets.this,"Resume sent on email!",Toast.LENGTH_SHORT).show();
+                if (behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+                    behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
+            }
+        });
 
 
         bottomSheet.setOnClickListener(new View.OnClickListener() {
@@ -435,6 +460,7 @@ private CoordinatorLayout mUILayout;
             @Override
             public void onAnimationCancel(Animator animation) {
             }
+
             @Override
             public void onAnimationRepeat(Animator animation) {
             }
@@ -542,7 +568,7 @@ private CoordinatorLayout mUILayout;
 
 
             addContentView(mGlView, new LayoutParams(LayoutParams.MATCH_PARENT,
-                    (int) (display.getHeight() * .85)));
+                    (int) (display.getHeight() * 1)));
             //.85
 
             // Sets the UILayout to be drawn in front of the camera

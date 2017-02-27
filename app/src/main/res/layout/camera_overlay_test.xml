@@ -54,7 +54,7 @@
         app:elevation="6dp"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/nameTv"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -79,13 +79,14 @@
         <!--android:layout_marginTop="2dp"-->
         <!--android:background="@android:color/white" />-->
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/descTv"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_below="@+id/nameTv"
             android:paddingLeft="8dp"
             android:text="Description"
+            android:layout_marginTop="8dp"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
@@ -101,7 +102,7 @@
             app:civ_border_width="2dp" />
 
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/contactTv"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
@@ -112,7 +113,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/emailTv"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
@@ -123,7 +124,7 @@
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/mobileTv"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
@@ -134,7 +135,7 @@
             android:textSize="12sp" />
 
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/projectsTv"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
@@ -146,7 +147,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/expTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -156,7 +157,7 @@
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/projectDetailsTv"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
@@ -168,7 +169,7 @@
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/toolsHeaderTv"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
@@ -181,7 +182,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/toolsTv"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
@@ -193,7 +194,7 @@
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/portfolioLinkHeaderTv"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
@@ -204,7 +205,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <TextView
+        <com.vuforia.samples.VuforiaSamples.ui.custom.CustomTextView
             android:id="@+id/portfolioLinkTv"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
@@ -220,10 +221,10 @@
             android:layout_height="50dp"
             android:layout_alignParentBottom="false"
             android:layout_below="@+id/portfolioLinkTv"
-
+            android:id="@+id/emailBtn"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:text="Get on Email" />
+            android:text="Email Resume" />
 
 
     </RelativeLayout>
